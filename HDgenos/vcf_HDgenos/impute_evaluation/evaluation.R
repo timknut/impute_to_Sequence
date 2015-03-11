@@ -3,14 +3,14 @@ require(ggplot2)
 
 ## Data setup
 setwd("~/Projects/impute_to_Sequence/HDgenos/vcf_HDgenos/impute_evaluation")
-sites_50_perc_removed.diff <- 
+sites_50_perc_removed.diff <-
 	read.delim(
-		"~/Projects/impute_to_Sequence/HDgenos/vcf_HDgenos/impute_evaluation/50_perc_removed.diff.sites", 
+		"~/Projects/impute_to_Sequence/HDgenos/vcf_HDgenos/impute_evaluation/50_perc_removed/50_perc_removed.diff.sites",
 				  stringsAsFactors=FALSE) %>% tbl_df
 eval_50.diff_matrix <- read.delim(
 	"~/Projects/impute_to_Sequence/HDgenos/vcf_HDgenos/impute_evaluation/50_perc_removed.diff.discordance_matrix",
 	stringsAsFactors=FALSE)
-freqs <- read.table("50_perc_removed.frq", header = F, skip = 1, 
+freqs <- read.table("50_perc_removed/50_perc_removed.frq", header = F, skip = 1,
 			  col.names = c("chrom", "pos", "n_alleles", "vetikke", "major", "maf"))
 
 #' ## Summary
@@ -22,7 +22,7 @@ qplot(POS/1e6, DISCORDANCE, data = sites_50_perc_removed.diff)
 inner_join(sites_50_perc_removed.diff, freqs, by = c("POS" = "pos")) %>%
 	tbl_df %>%
 	select(1,2,N_DISCORD, DISCORDANCE, maf) %>%
-	filter(DISCORDANCE > 0.5) %>% 
+	filter(DISCORDANCE > 0.5) %>%
 	#select(-c(3,4)) %>%
 	knitr::kable()
 

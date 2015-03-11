@@ -5,13 +5,19 @@
 *-Ex.R
 
 # R data files from past sessions
-.Rdata
+.RData
 
 # RStudio files
 .Rproj.user/
 
 # data files
-.txt
-.log
-.vcf
+*.txt
+*.log
+*.vcf
 *idx
+*.bed
+*.bim
+*.fam
+*.map
+*.ped
+*.gz
