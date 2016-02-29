@@ -21,3 +21,4 @@
 *.map
 *.ped
 *.gz
+.Rproj.user
