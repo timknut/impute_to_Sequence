@@ -75,9 +75,11 @@ different_markers_gt_ref <-
   filter(gt_markers, gt_markers$X1 %in% different_markers_gt_ref)
 
 # Now write the files and run the imputation ------------------------------
-cat(common_samples_gt_ref, file = "common_target_ref_samples_2_exclude.txt", sep = "\n")
+file1 <- "common_samples_2_exclude.txt"
+file2 <- "exclusive_target_markers_2_exclude.txt"
+cat(common_samples_gt_ref, file = file1, sep = "\n")
 # sub _ with : and write to file
-cat(str_replace(different_markers_gt_ref$X1, "_", ":"), sep = "\n", file = "exclusive_target_ref_markers_2_exclude.txt")
+cat(gsub(x = different_markers_gt_ref$X1, "_", ":"), sep = "\n", file = file2)
 
 # Delete temp files -------------------------------------------------------
 remove_res <- file.remove(gt_temp_markers,
@@ -85,8 +87,9 @@ remove_res <- file.remove(gt_temp_markers,
             ref_temp_markers,
             ref_temp_samples)
 if (any(remove_res)) {
-  message("temp files deleted. Program finished.
-          wrote: common_target_ref_samples_2_exclude.txt and exclusive_target_ref_markers_2_exclude.txt")
+  message(sprintf(
+"temp files deleted. Program finished.
+See %s and %s", file1, file2))
 }
 }
 
