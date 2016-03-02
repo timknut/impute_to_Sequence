@@ -70,20 +70,14 @@ ref_markers <-
 
 # Do intersects and diffs -------------------------------------------------
 common_samples_gt_ref <- intersect(gt_samples$X1, ref_samples$X1)
-different_markers_gt_ref <- setdiff(gt_markers$X2, ref_markers$X2)
+different_markers_gt_ref <- setdiff(gt_markers$X1, ref_markers$X1)
 different_markers_gt_ref <-
-  filter(gt_markers, gt_markers$X2 %in% different_markers_gt_ref)
-
-# head(common_samples_gt_ref)
-# head(different_markers_gt_ref)
-# cat("All ok\n")
-
+  filter(gt_markers, gt_markers$X1 %in% different_markers_gt_ref)
 
 # Now write the files and run the imputation ------------------------------
-cat(common_samples_gt_ref, file = "common_gt_ref_samples_2_exclude.txt", sep = "\n")
-write_csv(different_markers_gt_ref[2],
-          path = "exclusive_gt_ref_markers_2_exclude.txt",
-          col_names = F)
+cat(common_samples_gt_ref, file = "common_target_ref_samples_2_exclude.txt", sep = "\n")
+# sub _ with : and write to file
+cat(str_replace(different_markers_gt_ref$X1, "_", ":"), sep = "\n", file = "exclusive_target_ref_markers_2_exclude.txt")
 
 # Delete temp files -------------------------------------------------------
 remove_res <- file.remove(gt_temp_markers,
@@ -91,7 +85,8 @@ remove_res <- file.remove(gt_temp_markers,
             ref_temp_markers,
             ref_temp_samples)
 if (any(remove_res)) {
-  message("temp files deleted. Program finished")
+  message("temp files deleted. Program finished.
+          wrote: common_target_ref_samples_2_exclude.txt and exclusive_target_ref_markers_2_exclude.txt")
 }
 }
 
