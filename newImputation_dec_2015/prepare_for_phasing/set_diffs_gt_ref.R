@@ -86,10 +86,13 @@ write_csv(different_markers_gt_ref[2],
           col_names = F)
 
 # Delete temp files -------------------------------------------------------
-file.remove(gt_temp_markers,
+remove_res <- file.remove(gt_temp_markers,
             gt_temp_samples,
             ref_temp_markers,
             ref_temp_samples)
+if (any(remove_res)) {
+  message("temp files deleted. Program finished")
+}
 }
 
 # gt <-
