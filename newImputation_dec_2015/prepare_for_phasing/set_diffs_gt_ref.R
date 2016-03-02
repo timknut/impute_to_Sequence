@@ -103,15 +103,15 @@ if (any(remove_res)) {
 # Create a parser and add arguments, and parse the command line arguments
 # All steps are chained together, courtesy of magrittr
 p <- arg_parser("Create intersect and diff files before imputation") %>% 
-  add_argument("--gt", help="genotype VCF to impute", type="character") %>% 
-  add_argument("--ref", help="reference VCF to imute into", type="character")
+  add_argument("--target", help="target VCF to impute into REF", type="character") %>% 
+  add_argument("--ref", help="reference VCF to impute into", type="character")
 
 # Parse the command line arguments
 # This step is kept separate to simply error message
 argv <- parse_args(p)
 # Do work based on the passed arguments
 
-gt <- argv$gt
+gt <- argv$target
 ref <- argv$ref
 
 if(!is.na(gt) && !is.na(ref)){
