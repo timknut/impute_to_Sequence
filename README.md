@@ -4,7 +4,7 @@ Code base for the Bovine "impute to sequence" project at Cigene.
 ## Div. scripts
 `newImputation_dec_2015/prepare_for_phasing/set_diffs_target_ref.R`
 
-**Common samples: **
+**Common samples:**
 This script will print common target/ref samples that needs to be excluded from the target VCF before imputing with Beagle.
 
 **Exclusive target markers:**
