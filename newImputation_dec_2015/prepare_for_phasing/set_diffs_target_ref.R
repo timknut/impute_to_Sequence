@@ -1,9 +1,8 @@
-#!/usr/bin/env Rscript
-#args = commandArgs(trailingOnly=TRUE)
+#!/local/genome/packages/R/3.2.3/bin/Rscript
 
 lib_loc <- "/mnt/users/tikn/R/x86_64-pc-linux-gnu-library/3.2"
 suppressPackageStartupMessages(library(dplyr, lib.loc = lib_loc))
-library(argparser, quietly=TRUE, lib.loc = lib_loc)
+library(argparser, quietly = TRUE, lib.loc = lib_loc)
 
 main_function <- function(gt, ref){
 # Load pkgs and set lib.loc -----------------------------------------------
